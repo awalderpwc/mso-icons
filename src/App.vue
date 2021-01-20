@@ -37,14 +37,7 @@ export default {
     return {
       iconKeys: ICON_OFFSETS,
       searchTerm: "",
-      isPwC: true,
     };
-  },
-  methods: {
-    notPwC(e) {
-      console.log(e);
-      this.isPwC = false;
-    },
   },
   computed: {
     icons() {
@@ -102,5 +95,20 @@ body,
 }
 #check {
   display: none;
+}
+@media only screen and (max-width: 1000px) {
+  .md-autocomplete {
+    max-width: 400px;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .md-toolbar-section-end {
+    display: none !important;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .md-toolbar-section-start {
+    display: none !important;
+  }
 }
 </style>

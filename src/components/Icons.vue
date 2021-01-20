@@ -71,13 +71,27 @@ export default {
 * {
   user-select: none;
 }
+#icons,
+.scroller {
+  height: 100%;
+}
 #icons {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
   width: 100%;
+  grid-template-columns: repeat(5, 1fr);
   max-width: 800px;
   margin: auto;
   gap: 10px;
+}
+@media only screen and (max-width: 1000px) {
+  #icons {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media only screen and (max-width: 550px) {
+  #icons {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 .icon {
   display: flex;
@@ -106,5 +120,20 @@ export default {
 }
 input {
   display: none;
+}
+@media only screen and (max-width: 400px) {
+  #icons {
+    grid-template-columns: 1fr;
+  }
+  .icon {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+  }
+  .label {
+    margin-top: initial;
+    margin-left: 15px;
+  }
 }
 </style>
