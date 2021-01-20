@@ -88,6 +88,10 @@ export default {
   height: 100px;
   padding: 10px;
   box-sizing: border-box;
+  background-color: initial;
+}
+.icon.selected {
+  background-color: #448aff;
 }
 .label {
   font-size: small;

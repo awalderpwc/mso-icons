@@ -13,8 +13,20 @@
         </div>
       </md-app-toolbar>
       <md-app-content>
+        <img
+          id="check"
+          src="https://drive.google.com/uc?id=12jl45AVuFqZkw0eX2Hz9XQKYOXTXuspj"
+          @error="notPwC($event)"
+        />
         <md-empty-state
-          v-if="filteredIcons.length == 0"
+          v-if="!isPwC"
+          md-label="Access denied"
+          md-description="Sorry, you don't have access to this tool yet."
+          md-icon="report_problem"
+        >
+        </md-empty-state>
+        <md-empty-state
+          v-else-if="filteredIcons.length == 0"
           md-icon="youtube_searched_for"
           md-label="No icons match your search"
           md-description="Try searching for another term to find icons that match what you're looking for."
@@ -37,7 +49,14 @@ export default {
     return {
       iconKeys: ICON_OFFSETS,
       searchTerm: "",
+      isPwC: true,
     };
+  },
+  methods: {
+    notPwC(e) {
+      console.log(e);
+      this.isPwC = false;
+    },
   },
   computed: {
     icons() {
@@ -87,10 +106,13 @@ body,
   user-select: none;
 }
 .md-app {
-  max-height: 100vh;
+  height: 100vh;
 }
 .md-autocomplete {
   max-width: 600px;
   margin: 0 auto !important;
+}
+#check {
+  display: none;
 }
 </style>
