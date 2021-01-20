@@ -67,7 +67,6 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 * {
   user-select: none;
@@ -102,7 +101,7 @@ export default {
 .preview {
   height: 16px;
   width: 16px;
-  background: url("https://drive.google.com/uc?id=12jl45AVuFqZkw0eX2Hz9XQKYOXTXuspj");
+  background: url("../assets/mso-composite-16.png");
   background-repeat: no-repeat;
 }
 input {
