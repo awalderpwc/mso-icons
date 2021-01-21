@@ -5,7 +5,12 @@
         <div class="md-toolbar-section-start">
           <div class="md-title">MSO Icons lookup</div>
         </div>
-        <md-autocomplete md-layout="box" :md-options="[]" v-model="searchTerm">
+        <md-autocomplete
+          md-layout="box"
+          :md-options="[]"
+          @md-changed="updateSearch($event)"
+          v-model="searchValue"
+        >
           <label>Search...</label>
         </md-autocomplete>
         <div class="md-toolbar-section-end">
@@ -29,6 +34,7 @@
 <script>
 import { ICON_OFFSETS } from "./assets/IconKeys";
 import Icons from "./components/Icons.vue";
+import * as debounce from "debounce";
 
 export default {
   name: "App",
@@ -37,6 +43,7 @@ export default {
     return {
       iconKeys: ICON_OFFSETS,
       searchTerm: "",
+      searchValue: "",
     };
   },
   computed: {
@@ -56,6 +63,11 @@ export default {
         x.label.toLowerCase().includes(this.searchTerm.toLowerCase())
       );
     },
+  },
+  methods: {
+    updateSearch: debounce(function(e) {
+      this.searchTerm = e;
+    }, 500),
   },
 };
 </script>
